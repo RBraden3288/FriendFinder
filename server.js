@@ -3,9 +3,9 @@
 //  DEPENDENCIES
 //======================
 
-var express = require("express");
+var express = require("express");  //installed
 
-var path = require("path");
+var path = require("path");        //installed
 
 //======================
 //  EXPRESS CONFIG
@@ -22,8 +22,8 @@ app.use(express.json());
 //  ROUTER
 //======================
 
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app); //muted until finished
 
 //======================
 //  LISTENER

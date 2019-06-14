@@ -8,12 +8,22 @@
 // ===========================
 var friendsData = require("../data/friends");
 
+// ===========================
+//ROUTING: export to server.js ln
+// ===========================
+module.exports = function(app) {
 
-// ===========================
-// GET ROUTE
-// ===========================
+    // GET ROUTE
+    // when our user makes a request, we're collecting data in JSON form from the 
+    // friendsArray stored in friendsData using the route: api/friends
+    app.get("api/friends", function (req, res)  {
+        res.JSON(friendsData);
+    })
 
-
-// ===========================
-// POST ROUTE
-// ===========================
+    // POST ROUTE 
+    // posts data to api/friends 
+    app.post("api/friends", function (req, res) {
+        friendsData.push(req.body);
+        res.json(true)
+    })
+};
