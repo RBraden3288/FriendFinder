@@ -23,7 +23,7 @@ app.use(express.json());
 //======================
 
 require("./app/routing/apiRoutes")(app);
-require("./app/routing/htmlRoutes")(app); //muted until finished
+require("./app/routing/htmlRoutes")(app); 
 
 //======================
 //  LISTENER

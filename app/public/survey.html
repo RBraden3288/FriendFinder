@@ -17,11 +17,11 @@
         <form  action="http://localhost:8080/survey" method="POST">
             <div class="form-group">
             <label>Name &#40;Required&#41;</label><br>
-            <input name="name" placeholder="Full Name">
+            <input id="name" placeholder="First Name">
             </div>
             <div class="form-group">
             <label>Photo &#40;Required&#41;</label><br>
-            <input name="photo" placeholder="Link">
+            <input id="photo" placeholder="Link">
                 <br><small id="linkInfo" class="form-text text-muted">Please provide a link to your photo.</small>
             </div>
         </form>
@@ -31,15 +31,108 @@
 
         <!-- Survey Questions -->
         <div class="form-group">
-            <h5>Questions:</h5>
-            <label for="exampleFormControlSelect1">Question #</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-            <option>1 (strongly disagree)</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5 (strongly agree)</option>
-            </select>
+            <h5>Find your match!</h5>
+            <h3>Answer these personality traits as best as possible. </h3>
+                <br>
+                <br>
+                <label for="question1">#1 | You have a strong sense of adventure.</label>
+                <select class="form-control" id="qone" class="questions">
+                    <option>1 (strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (strongly agree)</option>
+                </select>
+                <br>
+                <br>
+                <label for="question2">#2 | You tend to be impatient and short-tempered. </label>
+                <select class="form-control" id="qtwo" class="questions">
+                    <option>1 (strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (strongly agree)</option>
+                </select>
+                <br>
+                <br>
+                <label for="question3">#3 | You are usually able to solve your own problems.</label>
+                <select class="form-control" id="qthree" class="questions">
+                    <option>1 (strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (strongly agree)</option>
+                </select>
+                <br>
+                <br>
+                <label for="question4">#4 | You tend to dream big and have high goals.<br> </label>
+                <select class="form-control" id="qfour" class="questions">
+                    <option>1 (strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (strongly agree)</option>
+                </select>
+                <br>
+                <br>
+                <label for="question5">#5 | You are social and have a lot of friends.<br> </label>
+                <select class="form-control" id="qfive" class="questions">
+                    <option>1 (strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (strongly agree)</option>
+                </select>
+                <br>
+                <br>
+                <label for="question6">#6 | Your sarcasm sometimes gets you in trouble.<br> </label>
+                <select class="form-control" id="qsix" class="questions">
+                    <option>1 (strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (strongly agree)</option>
+                </select>
+                <br>
+                <br>
+                <label for="question7">#7 | You can be very persuasive. <br> </label>
+                <select class="form-control" id="qseven" class="questions">
+                    <option>1 (strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (strongly agree)</option>
+                </select>
+                <br>
+                <br>
+                <label for="question8">#8 | Your adaptability allows you to thrive in tough situations. <br> </label>
+                <select class="form-control" id="qeight" class="questions">
+                    <option>1 (strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (strongly agree)</option>
+                </select>
+                <br>
+                <br>
+                <label for="question9">#9 | You easily own up to your mistakes. <br> </label>
+                <select class="form-control" id="qnine" class="questions">
+                    <option>1 (strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (strongly agree)</option>
+                </select>
+                <br>
+                <br>
+                <label for="question11">#10 | You are fun-loving.<br> </label>
+                <select class="form-control" id="qten" class="questions">
+                    <option>1 (strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (strongly agree)</option>
+                </select>
         </div>
 
         <!-- Submit Button -->
@@ -58,5 +151,90 @@
         </footer>
         
     </div>
+    
+    <div class='container'>
+        <!-- Modal after survey -->
+		<div id="resultsModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h3 class="modal-title">Your Match:</h1>
+                        </div>
+                        <div class="modal-body">
+                            <h2 id="matchName"></h2>
+                            <img id="matchPhoto" src="#">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    </div>
 </body>
 </html>
+
+<script type="text/javascript">
+    //prevent the form submission if name and photo and questions are filled out
+	$("#submit").on("click", function(event) {
+        event.preventDefault();
+        
+        var filledOut = true;
+        
+        if (
+            $("#name").val() === "" ||
+            $("#photo").val() === ""
+        ) { 
+            filledOut = false;
+            alert("Please fill out all fields");
+        } else if ( 
+            $("qone").val() === "empty" ||
+            $("qtwo").val() === "empty" ||
+            $("qthree").val() === "empty" ||
+            $("qfour").val() === "empty" ||
+            $("qfive").val() === "empty" ||
+            $("qsix").val() === "empty" ||
+            $("qseven").val() === "empty" ||
+            $("qeight").val() === "empty" ||
+            $("qnine").val() === "empty" ||
+            $("qten").val() === "empty"
+        ) {
+            filledOut = false;
+            alert("Please answer all questions.")
+        };
+
+        if(filledOut === true) {
+			var newUser = {
+				name: $("#name").val().trim(),
+				photo: $("#photo").val().trim(),
+				scores: [
+					$("#qone").val(),
+					$("#qtwo").val(),
+					$("#qthree").val(),
+					$("#qfour").val(),
+					$("#qfive").val(),
+					$("#qsix").val(),
+					$("#qseven").val(),
+					$("#qeight").val(),
+					$("#qnine").val(),
+					$("#qten").val()
+				]
+			};
+            
+            // call a function that takes userData and pushes it into the friends.js array
+            
+            var currentURL = window.location.origin;
+        
+			// Ajax call for receiving response after POST req
+			$.post(currentURL + "/api/friends", newUser, function(data) {
+				$("#matchName").text(data.name);
+				$("#matchPhoto").attr("src", data.photo);
+				$("#resultsModal").modal("toggle");
+			});
+
+        }
+    })
+</script>
+

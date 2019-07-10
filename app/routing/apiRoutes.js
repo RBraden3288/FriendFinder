@@ -7,6 +7,8 @@
 //Link Data from friends.js
 // ===========================
 var friendsData = require("../data/friends");
+console.log("This is friendsData: ")
+console.log (friendsData);
 
 // ===========================
 //ROUTING: export to server.js ln
@@ -23,7 +25,9 @@ module.exports = function(app) {
     // POST ROUTE 
     // posts data to api/friends 
     app.post("api/friends", function (req, res) {
-        friendsData.push(req.body);
-        res.json(true)
+        //handle incoming submissions
+        //incoming survey results: var newUser
+        //logic
+
     })
 };
